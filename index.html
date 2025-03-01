@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La mia pagina web</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area Protetta</title>
+  <script>
+    function checkPassword() {
+      var password = document.getElementById("password").value;
+      // Imposta qui la password desiderata (ad es. "secret123")
+      if (password === "123") {
+        document.getElementById("content").style.display = "block";
+        document.getElementById("login").style.display = "none";
+      } else {
+        alert("Password errata. Riprova.");
+      }
+    }
+  </script>
 </head>
 <body>
+  <div id="login">
+    <h2>Inserisci la password per accedere</h2>
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="checkPassword()">Accedi</button>
+  </div>
+
+  <div id="content" style="display: none;">
     <h1>Benvenuto!</h1>
-    <p>Questa pagina è raggiungibile tramite un QR code.</p>
+    <p>Questo è il contenuto protetto della pagina.</p>
+  </div>
 </body>
 </html>
