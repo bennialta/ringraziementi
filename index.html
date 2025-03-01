@@ -3,30 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Area Protetta</title>
-  <script>
-    function checkPassword() {
-      var password = document.getElementById("password").value;
-      // Imposta qui la password desiderata (ad es. "secret123")
-      if (password === "123") {
-        document.getElementById("content").style.display = "block";
-        document.getElementById("login").style.display = "none";
-      } else {
-        alert("Password errata. Riprova.");
-      }
+  <title>Area Protetta Client Side</title>
+  <style>
+    body {
+      background-color: #F0F0F0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
     }
-  </script>
+    #login {
+      margin-bottom: 20px;
+    }
+    input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+    #protectedContent {
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <div id="login">
     <h2>Inserisci la password per accedere</h2>
     <input type="password" id="password" placeholder="Password">
+    <br>
     <button onclick="checkPassword()">Accedi</button>
+    <div id="errorMessage" class="error"></div>
+  </div>
+  
+  <div id="protectedContent">
+    <h1>Benvenuto nell'area protetta!</h1>
+    <p>Questo è il contenuto riservato agli utenti autenticati.</p>
   </div>
 
-  <div id="content" style="display: none;">
-    <h1>Benvenuto!</h1>
-    <p>Questo è il contenuto protetto della pagina.</p>
-  </div>
+  <script>
+    function checkPassword() {
+      var password = document.getElementById("password").value;
+      var errorMessage = document.getElementById("errorMessage");
+      // Imposta qui la password desiderata (ad es. "secret123")
+      if (password === "secret123") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("protectedContent").style.display = "block";
+      } else {
+        errorMessage.textContent = "Password errata. Riprova.";
+      }
+    }
+  </script>
 </body>
 </html>
